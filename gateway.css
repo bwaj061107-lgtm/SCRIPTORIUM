@@ -1,0 +1,1014 @@
+/* =========================================================
+SCRIPTORIUM NEXUS V13 — GATEWAY
+Login / Registration / Lore Terminal
+Director / Writer / Actor clearance · Trust & Spectrum strip
+========================================================= */
+
+:root {
+    --gateway-bg: #050508;
+    --glass-bg: rgba(10, 10, 14, 0.66);
+    --glass-border: rgba(255, 255, 255, 0.09);
+    --glass-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    --text-main: #f4f4f5;
+    --text-muted: #a1a1aa;
+    --text-faint: #71717a;
+
+    --engine-normal-1: #10a37f;
+    --engine-normal-2: #1b72e8;
+
+    --engine-drama-1: #a5d721;
+    --engine-drama-2: #eab040;
+
+    --engine-fantasy-1: #d4af37;
+    --engine-fantasy-2: #8a0303;
+
+    --engine-horror-1: #8b0000;
+    --engine-horror-2: #f5f5f5;
+
+    --engine-scifi-1: #0a84ff;
+    --engine-scifi-2: #d9ecff;
+
+    --engine-superhero-1: #ed1d24;
+    --engine-superhero-2: #ffcc00;
+
+    --engine-romance-1: #e0688a;
+    --engine-romance-2: #c9a15a;
+
+    --engine-mystery-1: #c9a24b;
+    --engine-mystery-2: #7c8698;
+
+    --radius-lg: 22px;
+    --radius-md: 16px;
+    --radius-sm: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body.gateway-body {
+    font-family: "Inter", sans-serif;
+    background: var(--gateway-bg);
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   AMBIENT MULTIVERSE BACKGROUND
+========================================================= */
+.gateway-ambient {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(16, 163, 127, 0.08), transparent 30%),
+        radial-gradient(circle at 85% 15%, rgba(27, 114, 232, 0.08), transparent 28%),
+        radial-gradient(circle at 75% 80%, rgba(212, 175, 55, 0.07), transparent 30%),
+        radial-gradient(circle at 20% 85%, rgba(139, 0, 0, 0.07), transparent 28%),
+        var(--gateway-bg);
+}
+
+.gateway-orb {
+    position: absolute;
+    width: 34vw;
+    height: 34vw;
+    border-radius: 50%;
+    filter: blur(95px);
+    opacity: 0.22;
+    mix-blend-mode: screen;
+    animation: gatewayOrbDrift 26s ease-in-out infinite alternate;
+}
+
+.orb-normal {
+    top: -12%;
+    left: -8%;
+    background: linear-gradient(135deg, var(--engine-normal-1), var(--engine-normal-2));
+    animation-delay: 0s;
+}
+
+.orb-drama {
+    top: 25%;
+    right: -12%;
+    background: linear-gradient(135deg, var(--engine-drama-1), var(--engine-drama-2));
+    animation-delay: -4s;
+}
+
+.orb-fantasy {
+    bottom: -10%;
+    left: 12%;
+    background: linear-gradient(135deg, var(--engine-fantasy-1), var(--engine-fantasy-2));
+    animation-delay: -8s;
+}
+
+.orb-horror {
+    bottom: 18%;
+    right: 18%;
+    width: 24vw;
+    height: 24vw;
+    background: linear-gradient(135deg, var(--engine-horror-1), rgba(255, 255, 255, 0.35));
+    opacity: 0.14;
+    animation-delay: -12s;
+}
+
+.orb-scifi {
+    top: 8%;
+    left: 38%;
+    width: 26vw;
+    height: 26vw;
+    background: linear-gradient(135deg, var(--engine-scifi-1), var(--engine-scifi-2));
+    opacity: 0.16;
+    animation-delay: -16s;
+}
+
+.orb-superhero {
+    bottom: -14%;
+    right: -8%;
+    width: 30vw;
+    height: 30vw;
+    background: linear-gradient(135deg, var(--engine-superhero-1), var(--engine-superhero-2));
+    opacity: 0.16;
+    animation-delay: -20s;
+}
+
+.orb-romance {
+    top: 40%;
+    left: -6%;
+    width: 22vw;
+    height: 22vw;
+    background: linear-gradient(135deg, var(--engine-romance-1), var(--engine-romance-2));
+    opacity: 0.14;
+    animation-delay: -24s;
+}
+
+.orb-mystery {
+    top: 4%;
+    right: 22%;
+    width: 20vw;
+    height: 20vw;
+    background: linear-gradient(135deg, var(--engine-mystery-1), var(--engine-mystery-2));
+    opacity: 0.13;
+    animation-delay: -28s;
+}
+
+@keyframes gatewayOrbDrift {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(45px, 60px, 0) scale(1.08);
+    }
+    100% {
+        transform: translate3d(-35px, 35px, 0) scale(0.96);
+    }
+}
+
+.gateway-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 42px 42px;
+    opacity: 0.08;
+    mask-image: radial-gradient(circle at center, black 55%, transparent 100%);
+}
+
+.gateway-scanline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(16, 163, 127, 0.6),
+        rgba(27, 114, 232, 0.55),
+        rgba(212, 175, 55, 0.45),
+        rgba(237, 29, 36, 0.35),
+        transparent
+    );
+    opacity: 0.22;
+    animation: gatewayScan 7s linear infinite;
+}
+
+@keyframes gatewayScan {
+    0% {
+        transform: translateY(-5vh);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.25;
+    }
+    90% {
+        opacity: 0.25;
+    }
+    100% {
+        transform: translateY(105vh);
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   SHARED GLASS PANEL
+========================================================= */
+.glass-panel {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border-radius: var(--radius-lg);
+}
+
+/* =========================================================
+   PAGE SHELL
+========================================================= */
+.gateway-shell {
+    position: relative;
+    z-index: 1;
+    width: min(1400px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 24px 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100vh;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+.gateway-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 18px 22px;
+}
+
+.gateway-emblem {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    font-size: 24px;
+    color: #071016;
+    background: linear-gradient(
+        135deg,
+        var(--engine-normal-1),
+        var(--engine-normal-2),
+        var(--engine-fantasy-1)
+    );
+    box-shadow:
+        0 0 25px rgba(16, 163, 127, 0.22),
+        inset 0 0 12px rgba(255, 255, 255, 0.25);
+    flex-shrink: 0;
+}
+
+.gateway-title-wrap {
+    flex: 1;
+    min-width: 0;
+}
+
+.gateway-title {
+    font-family: "Cinzel", serif;
+    font-size: clamp(24px, 3vw, 40px);
+    line-height: 1;
+    letter-spacing: 4px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.gateway-title span {
+    background: linear-gradient(
+        90deg,
+        var(--engine-normal-1),
+        var(--engine-scifi-1),
+        var(--engine-fantasy-1),
+        var(--engine-romance-1),
+        var(--engine-superhero-1),
+        var(--engine-mystery-1)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.gateway-subtitle {
+    margin-top: 7px;
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+.gateway-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 13px;
+    border-radius: 999px;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    background: rgba(74, 222, 128, 0.08);
+    color: #4ade80;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 12px currentColor;
+    animation: gatewayPulse 2s ease-in-out infinite;
+}
+
+@keyframes gatewayPulse {
+    0%,
+    100% {
+        opacity: 0.55;
+        transform: scale(0.94);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+}
+
+/* =========================================================
+   TRUST / SPECTRUM STRIP
+========================================================= */
+.gateway-trustbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 22px;
+    padding: 13px 20px;
+}
+
+.trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.trust-item i {
+    color: #4ade80;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.spectrum-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-left: auto;
+    padding-left: 14px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.spectrum-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: default;
+    transition: transform 0.2s ease;
+}
+
+.spectrum-dot:hover {
+    transform: scale(1.35);
+}
+
+.dot-normal {
+    background: linear-gradient(135deg, var(--engine-normal-1), var(--engine-normal-2));
+}
+
+.dot-drama {
+    background: linear-gradient(135deg, var(--engine-drama-1), var(--engine-drama-2));
+}
+
+.dot-fantasy {
+    background: linear-gradient(135deg, var(--engine-fantasy-1), var(--engine-fantasy-2));
+}
+
+.dot-horror {
+    background: linear-gradient(135deg, var(--engine-horror-1), #4a4a4a);
+}
+
+.dot-scifi {
+    background: linear-gradient(135deg, var(--engine-scifi-1), var(--engine-scifi-2));
+}
+
+.dot-superhero {
+    background: linear-gradient(135deg, var(--engine-superhero-1), var(--engine-superhero-2));
+}
+
+.dot-romance {
+    background: linear-gradient(135deg, var(--engine-romance-1), var(--engine-romance-2));
+}
+
+.dot-mystery {
+    background: linear-gradient(135deg, var(--engine-mystery-1), var(--engine-mystery-2));
+}
+
+@media (max-width: 860px) {
+    .spectrum-strip {
+        margin-left: 0;
+        padding-left: 0;
+        border-left: none;
+    }
+}
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+.gateway-layout {
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 20px;
+    align-items: start;
+    flex: 1;
+}
+
+/* =========================================================
+   LORE / MANUAL PANEL
+========================================================= */
+.lore-panel {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-height: calc(100vh - 165px);
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
+.lore-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lore-panel::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+}
+
+.panel-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Cinzel", serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.panel-heading i {
+    color: var(--engine-normal-1);
+    filter: drop-shadow(0 0 10px rgba(16, 163, 127, 0.5));
+}
+
+.lore-terminal {
+    min-height: 190px;
+    max-height: 260px;
+    overflow: auto;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.32)),
+        rgba(0, 0, 0, 0.28);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    line-height: 1.75;
+    color: #8affc1;
+    white-space: pre-wrap;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.25);
+}
+
+.lore-terminal::after {
+    content: "▋";
+    display: inline-block;
+    margin-left: 4px;
+    color: #8affc1;
+    animation: terminalBlink 1s step-end infinite;
+}
+
+@keyframes terminalBlink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.lore-shortcuts h3,
+.lore-manual h3 {
+    margin-bottom: 12px;
+    font-family: "Cinzel", serif;
+    font-size: 15px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.shortcut-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.shortcut-chip {
+    padding: 12px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.shortcut-chip:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.shortcut-chip span {
+    width: fit-content;
+    padding: 5px 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.shortcut-chip small {
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.lore-manual {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    color: #c6c6cf;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.lore-manual p {
+    color: inherit;
+}
+
+.engine-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.engine-list li {
+    padding: 13px 14px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.engine-list li:hover {
+    transform: translateX(3px);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+.engine-list strong {
+    font-family: "Cinzel", serif;
+    font-size: 13px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
+
+.engine-list span {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.engine-list li:nth-child(1) strong {
+    color: #6ee7b7;
+}
+
+.engine-list li:nth-child(2) strong {
+    color: #bef264;
+}
+
+.engine-list li:nth-child(3) strong {
+    color: #fde68a;
+}
+
+.engine-list li:nth-child(4) strong {
+    color: #fca5a5;
+}
+
+.engine-list li:nth-child(5) strong {
+    color: #bfdbfe;
+}
+
+.engine-list li:nth-child(6) strong {
+    color: #fecaca;
+}
+
+.engine-list li:nth-child(7) strong {
+    color: #f3b6c8;
+}
+
+.engine-list li:nth-child(8) strong {
+    color: #e6d5a8;
+}
+
+/* =========================================================
+   AUTH PANEL
+========================================================= */
+.auth-panel {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: sticky;
+    top: 20px;
+}
+
+.auth-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 7px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.auth-tab {
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-muted);
+    padding: 13px 12px;
+    border-radius: 13px;
+    font-family: "Cinzel", serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.22s ease;
+}
+
+.auth-tab:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.auth-tab.active {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(16, 163, 127, 0.24),
+            rgba(27, 114, 232, 0.22)
+        );
+    border-color: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    box-shadow: 0 0 22px rgba(16, 163, 127, 0.12);
+}
+
+.auth-status {
+    display: none;
+    min-height: 20px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.auth-status.show {
+    display: block;
+}
+
+.auth-status.error {
+    color: #f87171;
+}
+
+.auth-status.success {
+    color: #4ade80;
+}
+
+.auth-form {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.auth-form.active {
+    display: flex;
+    animation: gatewayFormIn 0.28s ease;
+}
+
+@keyframes gatewayFormIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.field-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    flex: 1;
+}
+
+.field-block label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.field-block input {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.35);
+    color: #ffffff;
+    outline: none;
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.field-block input::placeholder {
+    color: rgba(255, 255, 255, 0.28);
+}
+
+.field-block input:focus {
+    border-color: rgba(16, 163, 127, 0.8);
+    box-shadow: 0 0 0 3px rgba(16, 163, 127, 0.12);
+    background: rgba(0, 0, 0, 0.44);
+}
+
+.field-block input[readonly] {
+    opacity: 0.78;
+    color: #d1d5db;
+    background: rgba(255, 255, 255, 0.04);
+    cursor: default;
+}
+
+.field-hint {
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--text-faint);
+}
+
+/* =========================================================
+   ROLE SELECTOR
+========================================================= */
+.role-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.role-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.role-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.22s ease;
+}
+
+.role-card input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.role-card i {
+    font-size: 22px;
+    color: #ffffff;
+    width: fit-content;
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.16));
+}
+
+.role-card strong {
+    font-family: "Cinzel", serif;
+    font-size: 14px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.role-card span {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.role-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.role-card.active {
+    border-color: rgba(16, 163, 127, 0.78);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(16, 163, 127, 0.15),
+            rgba(27, 114, 232, 0.1)
+        );
+    box-shadow: 0 0 25px rgba(16, 163, 127, 0.12);
+}
+
+.role-card.disabled {
+    opacity: 0.42;
+    cursor: not-allowed;
+    filter: grayscale(0.7);
+}
+
+.role-card.disabled:hover {
+    transform: none;
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================================
+   CERTIFICATION CHECKBOX
+========================================================= */
+.certify-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 13px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    user-select: none;
+}
+
+.certify-block input {
+    margin-top: 2px;
+    width: 15px;
+    height: 15px;
+    accent-color: var(--engine-normal-1);
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.certify-block span {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* =========================================================
+   SUBMIT / NOTES
+========================================================= */
+.auth-submit {
+    border: none;
+    padding: 15px 18px;
+    border-radius: 17px;
+    background: linear-gradient(
+        135deg,
+        var(--engine-normal-1),
+        var(--engine-normal-2)
+    );
+    color: #ffffff;
+    font-family: "Cinzel", serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    box-shadow: 0 10px 24px rgba(16, 163, 127, 0.16);
+}
+
+.auth-submit:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+    box-shadow: 0 14px 30px rgba(16, 163, 127, 0.24);
+}
+
+.auth-submit:active {
+    transform: translateY(0);
+}
+
+.auth-note {
+    font-size: 11px;
+    line-height: 1.7;
+    color: var(--text-faint);
+    text-align: center;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media (max-width: 1080px) {
+    .gateway-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .lore-panel {
+        max-height: none;
+    }
+
+    .auth-panel {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 720px) {
+    .gateway-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .gateway-status {
+        align-self: flex-start;
+    }
+
+    .form-row,
+    .role-grid,
+    .role-grid-3,
+    .shortcut-grid,
+    .auth-tabs {
+        grid-template-columns: 1fr;
+    }
+
+    .gateway-shell {
+        width: min(100% - 20px, 100%);
+        padding-top: 16px;
+    }
+
+    .lore-panel,
+    .auth-panel {
+        padding: 16px;
+    }
+}

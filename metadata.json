@@ -1,0 +1,6 @@
+{
+  "name": "Scriptorium Nexus",
+  "description": "Cinematic manuscript engine and unified studio production platform with Director, Writer, and Actor clearances, 8 Engine Protocols, real-time sync, and analytics dashboards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

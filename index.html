@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scriptorium Nexus — Gateway</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Cinzel:wght@400;600;700&family=EB+Garamond:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Special+Elite&family=Baskervville:wght@400;600;700&family=Cutive+Mono&family=Courier+Prime:wght@400;700&display=swap"
+        rel="stylesheet"
+    />
+
+    <!-- Gateway Styles -->
+    <link rel="stylesheet" href="css/gateway.css" />
+
+    <!-- Gateway Scripts -->
+    <script src="js/auth.js" defer></script>
+    <script src="js/lore.js" defer></script>
+</head>
+
+<body class="gateway-body" data-mode="dark">
+    <!-- Multiverse Ambient Background -->
+    <div class="gateway-ambient" aria-hidden="true">
+        <div class="gateway-orb orb-normal"></div>
+        <div class="gateway-orb orb-drama"></div>
+        <div class="gateway-orb orb-fantasy"></div>
+        <div class="gateway-orb orb-horror"></div>
+        <div class="gateway-orb orb-scifi"></div>
+        <div class="gateway-orb orb-superhero"></div>
+        <div class="gateway-orb orb-romance"></div>
+        <div class="gateway-orb orb-mystery"></div>
+        <div class="gateway-grid"></div>
+        <div class="gateway-scanline"></div>
+    </div>
+
+    <main class="gateway-shell">
+        <!-- Header -->
+        <header class="gateway-header glass-panel">
+            <div class="gateway-emblem">
+                <i class="fa-solid fa-feather-pointed"></i>
+            </div>
+
+            <div class="gateway-title-wrap">
+                <h1 class="gateway-title">
+                    SCRIPTORIUM <span>NEXUS</span>
+                </h1>
+                <p class="gateway-subtitle">
+                    Studio Access Gateway · Production Clearance Required
+                </p>
+            </div>
+
+            <div class="gateway-status">
+                <span class="status-dot"></span>
+                <span>VAULT ONLINE</span>
+            </div>
+        </header>
+
+        <!-- Trust / Spectrum Strip -->
+        <section class="gateway-trustbar glass-panel" aria-label="Platform trust and engine summary">
+            <div class="trust-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Identity safeguard active</span>
+            </div>
+
+            <div class="trust-item">
+                <i class="fa-solid fa-database"></i>
+                <span>Local-first storage · nothing leaves this browser</span>
+            </div>
+
+            <div class="trust-item">
+                <i class="fa-solid fa-user-pen"></i>
+                <span>Writer clearance open · Director &amp; Actor reserved</span>
+            </div>
+
+            <div class="spectrum-strip" role="img" aria-label="Eight Engine Protocols represented as a color spectrum">
+                <span class="spectrum-dot dot-normal" title="Normal"></span>
+                <span class="spectrum-dot dot-drama" title="Drama"></span>
+                <span class="spectrum-dot dot-fantasy" title="Fantasy"></span>
+                <span class="spectrum-dot dot-horror" title="Horror"></span>
+                <span class="spectrum-dot dot-scifi" title="Sci-Fi"></span>
+                <span class="spectrum-dot dot-superhero" title="Superhero"></span>
+                <span class="spectrum-dot dot-romance" title="Romance"></span>
+                <span class="spectrum-dot dot-mystery" title="Mystery"></span>
+            </div>
+        </section>
+
+        <div class="gateway-layout">
+            <!-- Manual / Lore Terminal -->
+            <section class="lore-panel glass-panel">
+                <div class="panel-heading">
+                    <i class="fa-solid fa-terminal"></i>
+                    <span>SYSTEM MANUAL</span>
+                </div>
+
+                <div id="loreTerminal" class="lore-terminal" aria-live="polite"></div>
+
+                <div class="lore-shortcuts">
+                    <h3>Protocol Shortcuts</h3>
+
+                    <div class="shortcut-grid">
+                        <div class="shortcut-chip">
+                            <span>F5</span>
+                            <small>Slideshow / Zen Mode</small>
+                        </div>
+
+                        <div class="shortcut-chip">
+                            <span>Ctrl + N</span>
+                            <small>New File</small>
+                        </div>
+
+                        <div class="shortcut-chip">
+                            <span>Ctrl + Shift + N</span>
+                            <small>New Folder</small>
+                        </div>
+
+                        <div class="shortcut-chip">
+                            <span>F2</span>
+                            <small>Rename Node</small>
+                        </div>
+
+                        <div class="shortcut-chip">
+                            <span>Delete</span>
+                            <small>Purge Node</small>
+                        </div>
+
+                        <div class="shortcut-chip">
+                            <span>ESC</span>
+                            <small>Exit Zen / Close Modal</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lore-manual">
+                    <h3>What is Scriptorium?</h3>
+                    <p>
+                        Scriptorium is a cinematic manuscript engine. It is not merely an editor.
+                        It is a controlled production environment where story architecture,
+                        character continuity, call sheets, and genre atmosphere are forced to
+                        obey the active Engine Protocol. Every project you open behaves like its
+                        own private production, with its own workspace, its own visual identity,
+                        and its own rules.
+                    </p>
+                    <p>
+                        Scroll this panel for the full manual — clearance roles, Studio ID
+                        formatting, identity protection, and a breakdown of every Engine Protocol
+                        currently online.
+                    </p>
+
+                    <h3>What is an Engine?</h3>
+                    <p>
+                        An Engine is a genre reality, built specifically for Scriptorium rather
+                        than borrowed from any one franchise. It changes the interface, the
+                        typography, the watermark, the animation language, and the architecture
+                        templates available inside a project. Eight Engine Protocols are online:
+                    </p>
+
+                    <ul class="engine-list">
+                        <li>
+                            <strong>NORMAL</strong>
+                            <span>A clean, neutral studio interface for modern and cross-genre writing.</span>
+                        </li>
+                        <li>
+                            <strong>DRAMA</strong>
+                            <span>Grounded underworld tension — ledgers, smoke, and quiet threats behind closed doors.</span>
+                        </li>
+                        <li>
+                            <strong>FANTASY</strong>
+                            <span>Ancient realms, bloodline oaths, and magic bound in old law.</span>
+                        </li>
+                        <li>
+                            <strong>HORROR</strong>
+                            <span>Paranormal instability. Flicker logic. Hostile silence.</span>
+                        </li>
+                        <li>
+                            <strong>SCI-FI</strong>
+                            <span>Deep-space survival, cold physics, and systems that can fail.</span>
+                        </li>
+                        <li>
+                            <strong>SUPERHERO</strong>
+                            <span>Multiverse-scale power and consequence — masks, oaths, and collateral damage.</span>
+                        </li>
+                        <li>
+                            <strong>ROMANCE</strong>
+                            <span>Entangled hearts, slow-burn tension, and the architecture of intimacy.</span>
+                        </li>
+                        <li>
+                            <strong>MYSTERY</strong>
+                            <span>Cold cases, hidden motives, and the discipline of the unanswered question.</span>
+                        </li>
+                    </ul>
+
+                    <h3>Engine Locking</h3>
+                    <p>
+                        Choosing one engine for a project locks it into Auteur Mode — the
+                        Soundstage will not allow switching away from it. Choosing several
+                        engines allows switching between only those selected engines inside that
+                        project. This keeps every production tonally disciplined.
+                    </p>
+
+                    <h3>Clearance Roles</h3>
+                    <p>
+                        Scriptorium now separates studio access into three clearances. Only one
+                        is active in this release — the other two are visible so you know what's
+                        coming, but registration and login are locked for them until the studio
+                        activates those portals.
+                    </p>
+                    <ul class="engine-list">
+                        <li>
+                            <strong>WRITER — ACTIVE</strong>
+                            <span>Full Studio Lot and Soundstage access. Create, rename, and delete productions, and write inside the Soundstage. This is the only clearance you can register today.</span>
+                        </li>
+                        <li>
+                            <strong>DIRECTOR — RESERVED</strong>
+                            <span>Planned for full production oversight across a studio's productions. Registration is locked until this portal activates.</span>
+                        </li>
+                        <li>
+                            <strong>ACTOR — RESERVED</strong>
+                            <span>Planned for read-only access to character sheets, call sheets, and dialogue sides. Registration is locked until this portal activates.</span>
+                        </li>
+                    </ul>
+
+                    <h3>Your Studio ID</h3>
+                    <p>
+                        Every Studio ID is role-specific, so a Studio ID's domain tells you
+                        exactly which clearance it belongs to:
+                    </p>
+                    <ul class="engine-list">
+                        <li>
+                            <strong>WRITER</strong>
+                            <span>name_secondname.initial@s.writer.com — active and registerable now.</span>
+                        </li>
+                        <li>
+                            <strong>DIRECTOR</strong>
+                            <span>name_secondname.initial@s.director.com — reserved for future release.</span>
+                        </li>
+                        <li>
+                            <strong>ACTOR</strong>
+                            <span>name_secondname.initial@s.actor.com — reserved for future release.</span>
+                        </li>
+                    </ul>
+
+                    <h3>Identity Protection</h3>
+                    <p>
+                        Because Scriptorium is open source and runs entirely in your browser, an
+                        early launch risk is identity squatting — someone registering a real
+                        director's or writer's name before that person ever signs up. This
+                        build adds three frontend-level safeguards against that:
+                    </p>
+                    <ul class="engine-list">
+                        <li>
+                            <strong>RESERVED NAMES</strong>
+                            <span>A small, extendable list of protected name combinations is blocked at registration.</span>
+                        </li>
+                        <li>
+                            <strong>UNVERIFIED BY DEFAULT</strong>
+                            <span>Every new Studio ID is marked UNVERIFIED until the studio reviews it, so nobody can quietly pass as confirmed.</span>
+                        </li>
+                        <li>
+                            <strong>SELF-CERTIFICATION</strong>
+                            <span>Registration requires confirming you are not impersonating a real person.</span>
+                        </li>
+                    </ul>
+                    <p>
+                        Be honest about the limits here: this is a frontend prototype, so none of
+                        it is tamper-proof against someone editing local code directly. A durable
+                        fix — invite codes, a reserved director registry, admin verification, a
+                        security PIN — needs a real backend, and is planned for a later phase.
+                    </p>
+
+                    <h3>Where Your Data Lives</h3>
+                    <p>
+                        This build stores accounts, sessions, and productions in your browser's
+                        local storage. Nothing is transmitted to a server. That makes it fast and
+                        private for a prototype, but it also means clearing your browser data or
+                        switching devices will not carry your productions with you — plan your
+                        exports accordingly.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Authentication Panel -->
+            <section class="auth-panel glass-panel">
+                <div class="auth-tabs">
+                    <button id="tabLogin" class="auth-tab active" type="button">
+                        Already a User
+                    </button>
+                    <button id="tabRegister" class="auth-tab" type="button">
+                        New User
+                    </button>
+                </div>
+
+                <div id="authStatus" class="auth-status" role="alert"></div>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active" autocomplete="off">
+                    <div class="field-block">
+                        <label for="loginEmail">Studio ID</label>
+                        <input
+                            id="loginEmail"
+                            type="text"
+                            placeholder="name_secondname.initial@s.writer.com"
+                            autocomplete="username"
+                            spellcheck="false"
+                        />
+                        <small class="field-hint">
+                            Format: name_secondname.initial@s.&lt;role&gt;.com — Writer clearance uses @s.writer.com
+                        </small>
+                    </div>
+
+                    <div class="field-block">
+                        <label for="loginPassword">Password</label>
+                        <input
+                            id="loginPassword"
+                            type="password"
+                            placeholder="Access Key"
+                            autocomplete="current-password"
+                        />
+                    </div>
+
+                    <button class="auth-submit" type="submit">
+                        <i class="fa-solid fa-key"></i>
+                        Access Studio
+                    </button>
+
+                    <div class="auth-note">
+                        Writer clearance enters the Studio Lot.
+                        Director and Actor clearance are reserved for a future release.
+                    </div>
+                </form>
+
+                <!-- Registration Form -->
+                <form id="registerForm" class="auth-form" autocomplete="off">
+                    <div class="form-row">
+                        <div class="field-block">
+                            <label for="regFirstName">First Name</label>
+                            <input
+                                id="regFirstName"
+                                type="text"
+                                placeholder="Ava"
+                                spellcheck="false"
+                            />
+                        </div>
+
+                        <div class="field-block">
+                            <label for="regSecondName">Second Name</label>
+                            <input
+                                id="regSecondName"
+                                type="text"
+                                placeholder="Marlowe"
+                                spellcheck="false"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="field-block">
+                            <label for="regInitial">Initial</label>
+                            <input
+                                id="regInitial"
+                                type="text"
+                                maxlength="1"
+                                placeholder="A"
+                                spellcheck="false"
+                            />
+                        </div>
+
+                        <div class="field-block">
+                            <label for="regEmailPreview">Generated Studio ID</label>
+                            <input
+                                id="regEmailPreview"
+                                type="text"
+                                readonly
+                                placeholder="name_secondname.initial@s.writer.com"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="field-block">
+                        <label for="regPassword">Custom Password</label>
+                        <input
+                            id="regPassword"
+                            type="password"
+                            placeholder="Create Access Key"
+                            autocomplete="new-password"
+                        />
+                    </div>
+
+                    <div class="field-block">
+                        <label for="regConfirmPassword">Confirm Password</label>
+                        <input
+                            id="regConfirmPassword"
+                            type="password"
+                            placeholder="Repeat Access Key"
+                            autocomplete="new-password"
+                        />
+                    </div>
+
+                    <div class="field-block">
+                        <label>Clearance Role</label>
+
+                        <div class="role-grid role-grid-3">
+                            <label class="role-card disabled" id="roleDirectorCard">
+                                <input
+                                    type="radio"
+                                    name="role"
+                                    id="roleDirector"
+                                    value="director"
+                                    disabled
+                                />
+                                <i class="fa-solid fa-user-shield"></i>
+                                <strong>Director</strong>
+                                <span>Reserved. Full oversight, coming later.</span>
+                            </label>
+
+                            <label class="role-card active" id="roleWriterCard">
+                                <input
+                                    type="radio"
+                                    name="role"
+                                    id="roleWriter"
+                                    value="writer"
+                                    checked
+                                />
+                                <i class="fa-solid fa-pen-nib"></i>
+                                <strong>Writer</strong>
+                                <span>Active. Studio Lot and Soundstage access.</span>
+                            </label>
+
+                            <label class="role-card disabled" id="roleActorCard">
+                                <input
+                                    type="radio"
+                                    name="role"
+                                    id="roleActor"
+                                    value="actor"
+                                    disabled
+                                />
+                                <i class="fa-solid fa-masks-theater"></i>
+                                <strong>Actor</strong>
+                                <span>Reserved. Read-only access, coming later.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <label class="certify-block" for="regCertify">
+                        <input type="checkbox" id="regCertify" />
+                        <span>
+                            I certify this identity is my own name or an original pen name, and
+                            I am not impersonating a real person without authorization.
+                        </span>
+                    </label>
+
+                    <button class="auth-submit" type="submit">
+                        <i class="fa-solid fa-id-badge"></i>
+                        Create Studio ID
+                    </button>
+
+                    <div class="auth-note">
+                        Studio IDs are permanent clearance records, marked UNVERIFIED until
+                        studio review. A role's clearance cannot be changed after registration.
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

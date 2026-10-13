@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scriptorium Nexus — Studio Lot</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Cinzel:wght@400;600;700&family=EB+Garamond:wght@400;500;600;700&family=Special+Elite&family=Baskervville:wght@400;600;700&family=Cutive+Mono&family=Courier+Prime:wght@400;700&display=swap"
+        rel="stylesheet"
+    />
+
+    <!-- Studio Styles -->
+    <link rel="stylesheet" href="css/studio.css" />
+
+    <!-- Studio Script -->
+    <script src="js/studio.js" defer></script>
+</head>
+
+<body class="studio-body" data-mode="dark">
+    <!-- Studio Ambient Background -->
+    <div class="studio-ambient" aria-hidden="true">
+        <div class="studio-orb orb-normal"></div>
+        <div class="studio-orb orb-drama"></div>
+        <div class="studio-orb orb-fantasy"></div>
+        <div class="studio-orb orb-horror"></div>
+        <div class="studio-orb orb-scifi"></div>
+        <div class="studio-orb orb-superhero"></div>
+        <div class="studio-orb orb-romance"></div>
+        <div class="studio-orb orb-mystery"></div>
+    </div>
+
+    <!-- Top Bar -->
+    <header class="studio-topbar glass-panel">
+        <div class="studio-brand">
+            <i class="fa-solid fa-clapperboard"></i>
+            <span>SCRIPTORIUM</span>
+            <small>STUDIO LOT</small>
+        </div>
+
+        <div class="studio-session">
+            <div id="sessionUser" class="session-user">
+                <i class="fa-solid fa-user-shield"></i>
+                <span>Clearance: Loading...</span>
+            </div>
+
+            <button id="logoutBtn" class="studio-btn danger" type="button">
+                <i class="fa-solid fa-power-off"></i>
+                Logout
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="studio-main">
+        <section class="studio-toolbar glass-panel">
+            <div class="toolbar-copy">
+                <h2>Production Projects</h2>
+                <p>
+                    Each project is a private Scriptorium V11.0 Soundstage.
+                    Choose one engine to lock the project atmosphere,
+                    or choose multiple engines to allow switching inside the editor.
+                </p>
+            </div>
+
+            <button id="newProjectBtn" class="studio-btn accent" type="button">
+                <i class="fa-solid fa-plus"></i>
+                New Project
+            </button>
+        </section>
+
+        <section id="projectGrid" class="project-grid">
+            <!-- Project cards injected by js/studio.js -->
+        </section>
+    </main>
+
+    <!-- New Project Modal -->
+    <div id="newProjectModal" class="studio-modal-overlay">
+        <div class="studio-modal glass-panel">
+            <div class="modal-top">
+                <h3>
+                    <i class="fa-solid fa-film"></i>
+                    Initialize Production
+                </h3>
+
+                <button id="closeNewProjectBtn" class="icon-btn" type="button">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="field-block">
+                <label for="projectTitle">Project Title</label>
+                <input
+                    id="projectTitle"
+                    type="text"
+                    placeholder="Untitled Production"
+                    spellcheck="false"
+                />
+            </div>
+
+            <div class="field-block">
+                <label>Engine Protocol</label>
+
+                <div class="engine-grid">
+                    <label class="engine-card">
+                        <input type="checkbox" class="engine-check" value="engine-normal" />
+                        <i class="fa-solid fa-brain"></i>
+                        <strong>Normal</strong>
+                        <span>Clean, modern studio interface.</span>
+                    </label>
+
+                    <label class="engine-card">
+                        <input type="checkbox" class="engine-check" value="engine-drama" />
+                        <i class="fa-solid fa-martini-glass"></i>
+                        <strong>Drama</strong>
+                        <span>Grounded prestige crime pressure.</span>
+                    </label>
+
+                    <label class="engine-card">
+                        <input type="checkbox" class="engine-check" value="engine-fantasy" />
+                        <i class="fa-solid fa-crown"></i>
+                        <strong>Fantasy</strong>
+                        <span>Realms, bloodlines &amp; old magic.</span>
+                    </label>
+
+                    <label class="engine-card">
+                        <input type="checkbox" class="engine-check" value="engine-horror" />
+                        <i class="fa-solid fa-ghost"></i>
+                        <strong>Horror</strong>
+                        <span>Original paranormal engine.</span>
+                    </label>
+
+                    <label class="engine-card">
+                        <input type="checkbox" class="engine-check" value="engine-scifi" />
+                        <i class="fa-solid fa-meteor"></i>
+                        <strong>Sci-Fi</strong>
+                        <span>Deep-space survival protocol.</span>
+                    </label>
+
+                    <label class="engine-card">
+                        <input type="checkbox" class="engine-check" value="engine-superhero" />
+                        <i class="fa-solid fa-bolt"></i>
+                        <strong>Superhero</strong>
+                        <span>Original multiverse engine.</span>
+                    </label>
+
+                    <label class="engine-card">
+                        <input type="checkbox" class="engine-check" value="engine-romance" />
+                        <i class="fa-solid fa-heart"></i>
+                        <strong>Romance</strong>
+                        <span>Slow-burn hearts engine.</span>
+                    </label>
+
+                    <label class="engine-card">
+                        <input type="checkbox" class="engine-check" value="engine-mystery" />
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <strong>Mystery</strong>
+                        <span>Cold-case noir engine.</span>
+                    </label>
+                </div>
+            </div>
+
+            <div id="engineNote" class="engine-note">
+                Select one engine to lock the project. Select multiple engines to activate switching.
+            </div>
+
+            <div class="modal-actions">
+                <button id="cancelProjectBtn" class="studio-btn" type="button">
+                    Cancel
+                </button>
+
+                <button id="createProjectBtn" class="studio-btn accent" type="button">
+                    <i class="fa-solid fa-check"></i>
+                    Create Project
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="confirmDeleteModal" class="studio-modal-overlay">
+        <div class="studio-modal studio-modal-small glass-panel">
+            <div class="modal-top">
+                <h3 class="text-danger">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    Delete Production
+                </h3>
+
+                <button id="closeDeleteModalBtn" class="icon-btn" type="button">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <p class="modal-desc">
+                Purge <span id="deleteProjectName">this project</span> from the Studio Lot?
+                All manuscripts inside this production will be removed from local storage.
+            </p>
+
+            <div class="modal-actions">
+                <button id="cancelDeleteBtn" class="studio-btn" type="button">
+                    Abort
+                </button>
+
+                <button id="confirmDeleteBtn" class="studio-btn danger" type="button">
+                    <i class="fa-solid fa-trash"></i>
+                    Execute Purge
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rename Modal -->
+    <div id="renameProjectModal" class="studio-modal-overlay">
+        <div class="studio-modal studio-modal-small glass-panel">
+            <div class="modal-top">
+                <h3>
+                    <i class="fa-solid fa-pen"></i>
+                    Rename Production
+                </h3>
+
+                <button id="closeRenameModalBtn" class="icon-btn" type="button">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="field-block">
+                <label for="renameProjectInput">New Project Title</label>
+                <input
+                    id="renameProjectInput"
+                    type="text"
+                    placeholder="New Production Title"
+                    spellcheck="false"
+                />
+            </div>
+
+            <div class="modal-actions">
+                <button id="cancelRenameBtn" class="studio-btn" type="button">
+                    Cancel
+                </button>
+
+                <button id="confirmRenameBtn" class="studio-btn accent" type="button">
+                    <i class="fa-solid fa-check"></i>
+                    Save Title
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
